@@ -18,9 +18,12 @@ def checkIfSorted():
         print(f"Attempts: {attempts}")
         shuffle(listOfNumbers)
     else:
+        print(listOfNumbers)
+        print(sortedNumbers)
         print("Numbers are sorted")
         print(f"Attempts: {attempts}")
         input("Press ENTER to go again") # stops infinite loop when listOfNumbers is sorted
+        shuffle(listOfNumbers)
 
 while True: # keeps checkIfSorted() running
     system("clear") # keeps window clean, results are more apparent
