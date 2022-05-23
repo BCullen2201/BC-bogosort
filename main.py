@@ -1,7 +1,15 @@
 from os import system
-from random import shuffle
+from random import randint, shuffle
 
-listOfNumbers = [9,4,7,2,1,5,3,6,8,10]
+def randomList():
+    list = []
+    
+    for i in range(1, 11):
+        list.append(randint(1,10))
+
+    return list
+
+listOfNumbers = randomList()
 attempts = 1
 
 sortedNumbers = listOfNumbers.copy()
