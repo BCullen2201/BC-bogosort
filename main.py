@@ -1,15 +1,13 @@
 from os import system
 from random import shuffle
 
-def main():
-    listOfNumbers = [9,4,7,2,1,5,3,6,8,10]
-    global attempts # lets user know how many times it took to sort listOfNumbers
-    attempts = 1
+listOfNumbers = [9,4,7,2,1,5,3,6,8,10]
+attempts = 1
 
-    sortedNumbers = listOfNumbers.copy()
-    sortedNumbers.sort()
+sortedNumbers = listOfNumbers.copy()
+sortedNumbers.sort()
 
-    def checkIfSorted():
+def checkIfSorted():
         global attempts # how the fuck do globals work
 
         if listOfNumbers != sortedNumbers:
@@ -27,6 +25,7 @@ def main():
             input("Press ENTER to go again") # stops infinite loop when listOfNumbers is sorted
             shuffle(listOfNumbers)
 
+def main():
     while True:
         system("clear")
         checkIfSorted()
