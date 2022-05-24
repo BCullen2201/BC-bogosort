@@ -1,39 +1,50 @@
 from os import system
 from random import randint, shuffle
 
-def randomList():
-    list = []
+attempts = 0
+
+def makeList():
+    global listOfNum
+    listOfNum = []
     
-    for i in range(1, 11):
-        list.append(randint(1,10))
+    for i in range(0,10):
+        listOfNum.append(randint(1,10))
 
-    return list
+    return listOfNum
 
-listOfNumbers = randomList()
-attempts = 1
+def makeSortedList():
+    global sortedNum
 
-sortedNumbers = listOfNumbers.copy()
-sortedNumbers.sort()
+    sortedNum = makeList().copy()
+    sortedNum.sort()
+
+    return sortedNum
 
 def checkIfSorted():
-        global attempts # how the fuck do globals work
-
-        if listOfNumbers != sortedNumbers:
-            print(listOfNumbers)
-            print(sortedNumbers)
-            print("Not sorted")
-            attempts = attempts + 1
-            print(f"Attempts: {attempts}")
-            shuffle(listOfNumbers)
-        else:
-            print(listOfNumbers)
-            print(sortedNumbers)
-            print("Numbers are sorted")
-            print(f"Attempts: {attempts}")
-            input("Press ENTER to go again") # stops infinite loop when listOfNumbers is sorted
-            shuffle(listOfNumbers)
-
+    global attempts
+    global listOfNum # I still don't know how globals work
+    global sortedNum
+    
+    if listOfNum != sortedNum:
+        print(f"List:   {listOfNum}")
+        print(f"Sorted: {sortedNum}")
+        print("Not sorted")
+        attempts = attempts + 1
+        print(f"Attempts: {attempts}")
+        shuffle(listOfNum)
+    else:
+        print(f"List:   {listOfNum}")
+        print(f"Sorted: {sortedNum}")
+        print("List is sorted!")
+        print(f"Attempts: {attempts}")
+        input("Press ENTER to try and sort another list...")
+        attempts = 0
+        listOfNum = makeList()
+        sortedNum = makeSortedList()
+        
 def main():
+    makeList()
+    makeSortedList()
     while True:
         system("clear")
         checkIfSorted()
