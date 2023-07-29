@@ -1,10 +1,8 @@
 from os import system
 from random import randint, shuffle
-
-attempts = 0
+from sys import exit
 
 def makeList():
-    global listOfNum
     listOfNum = []
     
     for i in range(0,10):
@@ -12,42 +10,37 @@ def makeList():
 
     return listOfNum
 
-def makeSortedList():
-    global sortedNum
+def makeSortedList(unsorted):
+    sortedNum = []
 
-    sortedNum = makeList().copy()
+    sortedNum = unsorted.copy()
     sortedNum.sort()
 
     return sortedNum
 
-def checkIfSorted():
-    global attempts
-    global listOfNum # I still don't know how globals work
-    global sortedNum
-    
-    if listOfNum != sortedNum:
-        print(f"List:   {listOfNum}")
-        print(f"Sorted: {sortedNum}")
+def checkIfSorted(sorted, unsorted):
+    attempts = 0
+
+    if unsorted != sorted:
+        print(f"List:   {unsorted}")
+        print(f"Sorted: {sorted}")
         print("Not sorted")
         attempts = attempts + 1
         print(f"Attempts: {attempts}")
-        shuffle(listOfNum)
+        shuffle(unsorted)
     else:
-        print(f"List:   {listOfNum}")
-        print(f"Sorted: {sortedNum}")
+        print(f"List:   {unsorted}")
+        print(f"Sorted: {sorted}")
         print("List is sorted!")
         print(f"Attempts: {attempts}")
-        input("Press ENTER to try and sort another list...")
-        attempts = 0
-        listOfNum = makeList()
-        sortedNum = makeSortedList()
+        exit()
         
 def main():
-    makeList()
-    makeSortedList()
+    numList = makeList()
+    sortedNumList = makeSortedList(numList)
     while True:
         system("clear")
-        checkIfSorted()
+        checkIfSorted(sortedNumList, numList)
 
 if __name__ == "__main__":
     main()
