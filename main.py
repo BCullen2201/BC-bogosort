@@ -1,6 +1,5 @@
 from os import system
 from random import randint, shuffle
-from sys import exit
 
 def makeList():
     listOfNum = []
@@ -21,26 +20,25 @@ def makeSortedList(unsorted):
 def checkIfSorted(sorted, unsorted):
     attempts = 0
 
-    if unsorted != sorted:
+    while unsorted != sorted:
+        system("clear")
         print(f"List:   {unsorted}")
         print(f"Sorted: {sorted}")
         print("Not sorted")
         attempts = attempts + 1
         print(f"Attempts: {attempts}")
         shuffle(unsorted)
-    else:
-        print(f"List:   {unsorted}")
-        print(f"Sorted: {sorted}")
-        print("List is sorted!")
-        print(f"Attempts: {attempts}")
-        exit()
+
+    system("clear")
+    print(f"List:   {unsorted}")
+    print(f"Sorted: {sorted}")
+    print("List is sorted!")
+    print(f"Attempts: {attempts}")
         
 def main():
     numList = makeList()
     sortedNumList = makeSortedList(numList)
-    while True:
-        system("clear")
-        checkIfSorted(sortedNumList, numList)
+    checkIfSorted(sortedNumList, numList)
 
 if __name__ == "__main__":
     main()
