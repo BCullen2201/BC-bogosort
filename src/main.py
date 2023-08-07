@@ -24,9 +24,6 @@ def checkIfSorted(numList):
         attempts = attempts + 1
         walls = 0
 
-        # print(f"List:     {numList}")
-        # print(f"Attempts: {attempts}")
-
         for i in range(0, length):
             if numList[i] > numList[i + 1]:
                 walls = walls + 1
