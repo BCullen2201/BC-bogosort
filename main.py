@@ -1,11 +1,13 @@
 from os import system
-from random import randint, shuffle
+from random import shuffle
 
 def makeList():
     listOfNum = []
     
-    for i in range(0,10):
-        listOfNum.append(randint(1,10))
+    for i in range(1,11):
+        listOfNum.append(i)
+
+    shuffle(listOfNum)
 
     return listOfNum
 
